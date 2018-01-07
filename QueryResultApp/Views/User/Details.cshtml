@@ -1,0 +1,78 @@
+﻿@model QueryResultApp.Models.UserDetails
+
+@if (Model != null)
+{
+
+<div class="row">
+           
+    <div class="row">
+        <div class="col-md-2 control-label">
+            @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
+        </div>
+
+        <div class="col-md-10 control-label">
+            @Html.DisplayFor(model => model.UserName, new { @class = "form-control" })
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-2 control-label">
+            @Html.LabelFor(model => model.Location, new { @class = "control-label" })
+        </div>
+
+        <div class="col-md-10 control-label">
+            @Html.DisplayFor(model => model.Location, new { @class = "control-label" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2 control-label">
+            @Html.LabelFor(model => model.Avatar, new { @class = "control-label" })
+        </div>
+
+        <div class="col-md-10 control-label">
+            @Html.DisplayFor(model => model.Avatar, new { @class = "control-label" })
+        </div>
+    </div>
+</div>
+
+    <br />
+
+if (Model.Repositories != null)
+{
+    <div class="row">
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Full Name")
+                </th>
+                <th>
+                    @Html.DisplayName("Stargazers Count")
+                </th>
+                <th></th>
+            </tr>
+
+            
+            @foreach (var item in Model.Repositories)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FullName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StargazersCount)
+                    </td>
+                </tr>
+
+            }
+        </table>
+
+    </div>
+}
+}

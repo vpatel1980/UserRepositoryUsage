@@ -1,0 +1,35 @@
+﻿@model QueryResultApp.Models.User
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    object detailsObject;
+    var value = @ViewData.TryGetValue("details",out detailsObject);
+}
+
+<hr />
+
+<div class="row">
+    @using (Html.BeginForm("Index", "User", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {        
+        <div class="form-group">
+            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+            <div class="col-md-2">
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+            <div class="col-md-2">
+                <input type="submit" class="btn btn-default" value="Submit" />
+            </div>            
+        </div>
+        <div class="row">
+            @Html.ValidationSummary("", new { @class = "text-danger" })
+        </div>
+
+    }
+</div>
+
+<hr />
+
+<div class="row">    
+        @Html.Partial("Details", detailsObject)    
+</div>
